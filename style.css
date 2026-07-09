@@ -1,0 +1,142 @@
+/* Importing Modern Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    /* Animated Gradient Background */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #333;
+}
+
+/* Background Animation Keyframes */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.quiz-container {
+    /* Glassmorphism Effect */
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    width: 450px;
+    max-width: 90%;
+    /* Entry Animation */
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h2 { 
+    margin-top: 0; 
+    color: #1e293b; 
+    font-size: 1.4rem;
+    line-height: 1.5;
+    text-align: center;
+    font-weight: 600;
+}
+
+.options { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 15px; 
+    margin-top: 25px; 
+}
+
+/* Option Buttons */
+button {
+    padding: 12px 18px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    background: #f1f5f9;
+    color: #334155;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    font-weight: 500;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+button:hover { 
+    background: #e2e8f0; 
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    border-color: #cbd5e1;
+}
+
+/* Dynamically added class for Selected Option */
+button.selected {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 8px 15px rgba(118, 75, 162, 0.4);
+    transform: scale(1.02);
+    border-color: transparent;
+}
+
+/* Next / Submit Button */
+.submit-btn {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    color: #0f172a;
+    font-weight: 600;
+    border: none;
+    margin-top: 25px;
+    width: 100%;
+    text-align: center;
+    display: none;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(67, 233, 123, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.submit-btn:hover { 
+    background: linear-gradient(135deg, #38f9d7 0%, #43e97b 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px rgba(67, 233, 123, 0.5);
+}
+
+/* Result Box Specific */
+#result-score { 
+    text-align: center; 
+    font-size: 1.5rem; 
+    font-weight: 600; 
+    color: #334155; 
+    margin-bottom: 25px;
+}
+
+#result-box button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+    border: none;
+    padding: 15px;
+    font-weight: 600;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(118, 75, 162, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#result-box button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px rgba(118, 75, 162, 0.5);
+}
