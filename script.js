@@ -1,4 +1,4 @@
-// Database simulation (Array of Objects) with 20 Questions in English
+// Database simulation (Array of Objects) with 20 Questions
 const quizData = [
     {
         question: "What is the full form of HTML?",
@@ -67,7 +67,7 @@ const quizData = [
     },
     {
         question: "How do you insert a comment in HTML?",
-        options: ["// comment //", "", "/* comment */", "<! comment !>"],
+        options: ["// comment //", "<!-- comment -->", "/* comment */", "<! comment !>"],
         correct: 1
     },
     {
@@ -105,6 +105,7 @@ const quizData = [
 let currentQuestionIndex = 0;
 let score = 0;
 let selectedOption = null;
+let userAnswers = []; // Array to track user's choices for the final report
 
 const questionText = document.getElementById("question-text");
 const optionsContainer = document.getElementById("options-container");
@@ -126,32 +127,29 @@ function loadQuestion() {
 }
 
 function selectOption(btn, index) {
-    // Remove 'selected' class from all other buttons
     Array.from(optionsContainer.children).forEach(child => {
         child.classList.remove("selected");
     });
     
-    // Add 'selected' class to the clicked button for modern styling
     btn.classList.add("selected");
-    
     selectedOption = index;
     nextBtn.style.display = "block";
     
-    // Change button text if it is the very last question
     if(currentQuestionIndex === quizData.length - 1) {
         nextBtn.innerText = "Submit Quiz";
     }
 }
 
 function nextQuestion() {
-    // Check if the selected answer is correct
+    // Save the user's selected answer index
+    userAnswers.push(selectedOption);
+
     if (selectedOption === quizData[currentQuestionIndex].correct) {
         score++;
     }
 
     currentQuestionIndex++;
 
-    // Load the next question or show the final result
     if (currentQuestionIndex < quizData.length) {
         loadQuestion();
     } else {
@@ -162,9 +160,38 @@ function nextQuestion() {
 function showResult() {
     document.getElementById("quiz-box").style.display = "none";
     const resultBox = document.getElementById("result-box");
-    resultBox.style.display = "block";
-    document.getElementById("result-score").innerText = `You scored ${score} out of ${quizData.length}!`;
+    resultBox.style.display = "flex"; // Flex layouts for better report rendering
+
+    // Calculate dynamic percentage
+    const percentage = Math.round((score / quizData.length) * 100);
+
+    // Dynamic Score Layout
+    document.getElementById("result-score").innerHTML = `
+        <div class="score-summary">
+            <span class="final-score">Score: ${score} / ${quizData.length}</span>
+            <span class="percentage">${percentage}%</span>
+        </div>
+    `;
+
+    // Generating Report Cards 
+    const reportContainer = document.getElementById("report-container");
+    reportContainer.innerHTML = ""; // Clear loader text
+
+    quizData.forEach((q, index) => {
+        const userAnsIndex = userAnswers[index];
+        const isCorrect = userAnsIndex === q.correct;
+
+        const reportItem = document.createElement("div");
+        reportItem.classList.add("report-item", isCorrect ? "correct-report" : "wrong-report");
+
+        reportItem.innerHTML = `
+            <p class="report-question"><strong>Q${index + 1}.</strong> ${q.question}</p>
+            <p class="report-ans">Your Answer: <span class="ans-text">${q.options[userAnsIndex]}</span></p>
+            ${!isCorrect ? `<p class="report-ans">Correct Answer: <span class="correct-text">${q.options[q.correct]}</span></p>` : ''}
+        `;
+        reportContainer.appendChild(reportItem);
+    });
 }
 
-// Initialize and start the quiz
+// Start Quiz Initialization
 loadQuestion();
