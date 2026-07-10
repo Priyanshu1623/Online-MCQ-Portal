@@ -4,23 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online MCQ Portal</title>
+    <!-- Linking external CSS file -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+    <!-- Quiz Box Section -->
     <div class="quiz-container" id="quiz-box">
         <h2 id="question-text">Question loading...</h2>
-        <div class="options" id="options-container">
-        </div>
+        <div class="options" id="options-container"></div>
         <button class="submit-btn" id="next-btn" onclick="nextQuestion()">Next Question</button>
     </div>
-
+   <!-- Result & Detailed Report Box Section -->
     <div class="quiz-container" id="result-box" style="display: none;">
         <h2>Test Completed!</h2>
-        <p id="result-score"></p>
-        <button style="width:100%; background:#007bff; color:white; border:none; padding: 10px; border-radius: 5px; cursor: pointer;" onclick="location.reload()">Restart Quiz</button>
+        <div id="result-score"></div>
+        
+        <!-- Dynamic Report Container -->
+        <div id="report-container"></div>
+        <button class="restart-btn" onclick="location.reload()">Restart Quiz</button>
     </div>
 
+    <!-- Linking external JavaScript file -->
     <script src="script.js"></script>
 </body>
 </html>
