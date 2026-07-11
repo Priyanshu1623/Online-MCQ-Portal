@@ -1,9 +1,10 @@
 # 📝 Modern Online MCQ Quiz Portal
 
+**[🔴 Live Demo - Click Here](https://priyanshu1623.github.io/Online-MCQ-Portal/)**
 A highly interactive and modern Multiple Choice Question (MCQ) web application built using HTML, CSS, and Vanilla JavaScript. The portal tests your knowledge of fundamental Web Development concepts.
 
-## 🚀 Live Demo
-You can play the live quiz here: [https://priyanshu1623.github.io/Online-MCQ-Portal/](https://priyanshu1623.github.io/Online-MCQ-Portal/)
+
+ 
 
 It features a premium **Glassmorphism UI**, smooth hover animations, and an animated gradient background for an engaging user experience.
 
